@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: 2-RabbitMQ-Fanout-Exchange
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: myuser
+    password: secret
