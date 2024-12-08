@@ -2,6 +2,7 @@ package be.ucll.backend2.messaging.sse_chatroom.controller;
 
 import be.ucll.backend2.messaging.sse_chatroom.model.Message;
 import be.ucll.backend2.messaging.sse_chatroom.service.MessageService;
+import org.springframework.http.MediaType;
 import org.springframework.http.codec.ServerSentEvent;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
@@ -23,7 +24,7 @@ public class MessageController {
         return messageService.getAllMessages();
     }
 
-    @GetMapping("/stream")
+    @GetMapping(value = "/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<ServerSentEvent<Message>> streamMessages() {
         return messageService.subscribe()
                 .map(message ->
