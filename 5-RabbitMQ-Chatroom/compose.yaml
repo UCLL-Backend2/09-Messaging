@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: messaging
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: messaging
+    ports:
+      - '5432:5432'
+  rabbitmq:
+    image: rabbitmq:4
+    environment:
+      RABBITMQ_DEFAULT_USER: myuser
+      RABBITMQ_DEFAULT_PASS: secret
+    ports:
+      - '5672:5672'
